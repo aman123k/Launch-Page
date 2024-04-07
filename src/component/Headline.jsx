@@ -3,6 +3,8 @@ import Svg from "./Svg";
 
 function Headline() {
   const [seconds, setSeconds] = useState(3);
+  const [mail, setMail] = useState("");
+  const [notification, setNotification] = useState(false);
   useEffect(() => {
     const interval = setInterval(() => {
       if (seconds > 0) {
@@ -13,6 +15,12 @@ function Headline() {
     // Clear the interval when the component unmounts
     return () => clearInterval(interval);
   }, [seconds]);
+  const handelClick = (e) => {
+    e.preventDefault();
+    if (!mail.match(/\b[A-Za-z0-9._%+-]+@gmail\.com\b/)) {
+      setNotification(true);
+    }
+  };
   return (
     <>
       <section className=" flex flex-col max-[650px]:mx-4 justify-center  h-[calc(100vh-104px)] max-[650px]:h-auto items-center  py-14">
@@ -61,16 +69,23 @@ function Headline() {
             <input
               type="text"
               placeholder="Please enter your email id"
+              onChange={(e) => setMail(e.currentTarget.value)}
               className=" w-full bg-transparent text-[#cccccc] border-[#CCCCCC] border rounded-lg text-lg py-1.5 px-3 outline-none"
             />
             <button
               type="button"
-              className=" select-none cursor-pointer text-[#878787] font-semibold text-lg px-6 py-1.5 rounded-lg capitalize tracking-wider
-             bg-[#ffffff] flex-shrink-0 max-[650px]:w-full"
+              className={` select-none cursor-pointer font-semibold text-lg px-6 py-1.5 rounded-lg capitalize tracking-wider
+             bg-[#ffffff] flex-shrink-0 max-[650px]:w-full ${
+               mail ? "text-black" : "text-[#878787] "
+             }`}
+              onClick={handelClick}
             >
               Notify me
             </button>
           </form>
+          <span className=" text-start px-3 text-[#F14722] font-semibold tracking-wide">
+            {notification ? "invalid email" : ""}
+          </span>
         </footer>
       </section>
     </>

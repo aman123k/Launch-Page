@@ -13,9 +13,9 @@ function GetStart() {
   };
   return (
     <>
-      <section className=" text-[#EFEFEF] flex flex-col justify-center h-[calc(100vh-104px)] max-[650px]:h-[calc(100vh-104px)] items-center py-14">
+      <section className=" text-[#EFEFEF] flex flex-col justify-center h-[calc(100vh-104px)] items-center py-14">
         <div
-          className=" w-[500px] max-[650px]:w-[80%] text-center [word-spacing-10]  tracking-wide
+          className=" w-[500px] max-[650px]:w-[85%] text-center [word-spacing-10]  tracking-wide
            flex flex-col gap-4 bg-gradient-to-r rounded-xl
          p-10 from-[#4a173f] via-[#3e1744] to-[#2d174c]"
         >
@@ -37,8 +37,8 @@ function GetStart() {
         <div className=" absolute -z-10">
           <Lottie
             options={defaultOptions}
-            height={window.innerWidth <= 650 ? 700 : 900}
-            width={window.innerWidth <= 650 ? "90%" : 600}
+            height={window.innerWidth <= 650 ? 800 : 900}
+            width={window.innerWidth <= 650 ? "100%" : 600}
           />
         </div>
       </section>

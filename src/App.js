@@ -10,7 +10,7 @@ function App() {
   useEffect(() => {
     setTimeout(() => {
       setStart(true);
-    }, [3000]);
+    }, [4000]);
   }, []);
   return (
     <>
