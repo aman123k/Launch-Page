@@ -20,6 +20,9 @@ function Headline() {
     if (!mail.match(/\b[A-Za-z0-9._%+-]+@gmail\.com\b/)) {
       setNotification(true);
     }
+    setTimeout(() => {
+      setNotification(false);
+    }, [2000]);
   };
   return (
     <>
@@ -64,14 +67,19 @@ function Headline() {
           </p>
           <form
             action="#"
-            className=" my-4 w-full flex items-center max-[650px]:flex-col gap-4"
+            className=" my-4 w-full flex items-start max-[650px]:flex-col gap-4"
           >
-            <input
-              type="text"
-              placeholder="Please enter your email id"
-              onChange={(e) => setMail(e.currentTarget.value)}
-              className=" w-full bg-transparent text-[#cccccc] border-[#CCCCCC] border rounded-lg text-lg py-1.5 px-3 outline-none"
-            />
+            <div className=" w-full flex flex-col gap-2">
+              <input
+                type="text"
+                placeholder="Please enter your email id"
+                onChange={(e) => setMail(e.currentTarget.value)}
+                className=" w-full bg-transparent text-[#cccccc] border-[#CCCCCC] border rounded-lg text-lg py-1.5 px-3 outline-none"
+              />
+              <span className="text-start px-3 text-[#F14722] font-semibold tracking-wide">
+                {notification ? "invalid email" : ""}
+              </span>
+            </div>
             <button
               type="button"
               className={` select-none cursor-pointer font-semibold text-lg px-6 py-1.5 rounded-lg capitalize tracking-wider
@@ -83,9 +91,6 @@ function Headline() {
               Notify me
             </button>
           </form>
-          <span className=" text-start px-3 text-[#F14722] font-semibold tracking-wide">
-            {notification ? "invalid email" : ""}
-          </span>
         </footer>
       </section>
     </>
